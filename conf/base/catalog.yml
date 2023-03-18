@@ -2,3 +2,6 @@
 #
 # Documentation for this file format can be found in "The Data Catalog"
 # Link: https://kedro.readthedocs.io/en/stable/data/data_catalog.html
+merged_dataframe:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/merged_dataframe.feather

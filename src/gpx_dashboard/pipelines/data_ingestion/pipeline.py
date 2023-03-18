@@ -19,7 +19,7 @@ def create_pipeline(**kwargs) -> Pipeline:
         node(
             func=read_files,
             inputs=['files_path'],
-            outputs="df",
-            name='read_files'
+            outputs="merged_dataframe",
+            name='read-files'
         )
     ])
