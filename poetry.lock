@@ -438,6 +438,34 @@ ssh = ["paramiko"]
 tqdm = ["tqdm"]
 
 [[package]]
+name = "geographiclib"
+version = "2.0"
+description = "The geodesic routines from GeographicLib"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
+name = "geopy"
+version = "2.3.0"
+description = "Python Geocoding Toolbox"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+geographiclib = ">=1.52,<3"
+
+[package.extras]
+aiohttp = ["aiohttp"]
+dev = ["coverage", "flake8 (>=5.0,<5.1)", "isort (>=5.10.0,<5.11.0)", "pytest-asyncio (>=0.17)", "pytest (>=3.10)", "readme-renderer", "sphinx-issues", "sphinx (<=4.3.2)", "sphinx-rtd-theme (>=0.5.0)"]
+dev-docs = ["readme-renderer", "sphinx (<=4.3.2)", "sphinx-issues", "sphinx-rtd-theme (>=0.5.0)"]
+dev-lint = ["flake8 (>=5.0,<5.1)", "isort (>=5.10.0,<5.11.0)"]
+dev-test = ["coverage", "pytest-asyncio (>=0.17)", "pytest (>=3.10)", "sphinx (<=4.3.2)"]
+requests = ["urllib3 (>=1.24.2)", "requests (>=2.16.2)"]
+timezone = ["pytz"]
+
+[[package]]
 name = "gitdb"
 version = "4.0.10"
 description = "Git Object Database"
@@ -2163,7 +2191,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "flake8 (<5)", "pytest-co
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.9,<3.11"
-content-hash = "0c4224307a65e8ce106690cdc08432705ae94661c7d31e90a78c2aa29f73699d"
+content-hash = "bf80b673e609aeb918571f72b8773bff84e56b916947db6775e5961b20f79845"
 
 [metadata.files]
 aiofiles = []
@@ -2202,6 +2230,8 @@ fastapi = []
 fastjsonschema = []
 fqdn = []
 fsspec = []
+geographiclib = []
+geopy = []
 gitdb = []
 gitpython = []
 gpxpy = []
