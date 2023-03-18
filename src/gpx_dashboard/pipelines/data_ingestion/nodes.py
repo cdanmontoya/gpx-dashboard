@@ -10,7 +10,8 @@ def get_files_path(prefix='data/01_raw/', extension='gpx') -> List[str]:
 
 
 def read_files(files_path: List[str]) -> pd.DataFrame:
-    return pd.concat([read_gpx(file) for file in files_path])
+    print(pd.concat([read_gpx(file) for file in files_path], ignore_index=True))
+    return pd.concat([read_gpx(file) for file in files_path], ignore_index=True)
 
 
 def read_gpx(file: str) -> pd.DataFrame:
