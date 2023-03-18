@@ -11,12 +11,14 @@ def add_geographic_attributes(df: pd.DataFrame) -> pd.DataFrame:
     geocode = RateLimiter(geolocator.reverse, min_delay_seconds=1)
 
     df['lat_lon'] = df['latitude'].astype('string') + ", " + df['longitude'].astype('string')
-    df['location'] =df['lat_lon'].apply(geocode)
+
+    df = df.head(40)
+    df['location'] = df['lat_lon'].apply(geocode)
     df['neighbourhood'] =df['location'].transform(lambda location: location.raw['address']['neighbourhood'])
     df['suburb'] =df['location'].transform(lambda location: location.raw['address']['suburb'])
     df['city'] =df['location'].transform(lambda location: location.raw['address']['city'])
     df['postcode'] =df['location'].transform(lambda location: location.raw['address']['postcode'])
-    df.drop('lat_lon', axis='columns')
+    df.drop(['lat_lon', 'location'], axis='columns', inplace=True)
 
     return df
 

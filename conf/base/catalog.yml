@@ -5,3 +5,7 @@
 merged_dataframe:
   type: pandas.CSVDataSet
   filepath: data/02_intermediate/merged_dataframe.feather
+
+geo_df:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/geo_df.csv

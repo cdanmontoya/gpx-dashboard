@@ -11,7 +11,7 @@ def create_pipeline(**kwargs) -> Pipeline:
     return pipeline([
         node(
             func=add_geographic_attributes,
-            inputs=['df'],
+            inputs=['merged_dataframe'],
             outputs="geo_df",
             name='add_geolocation_attr'
         )
