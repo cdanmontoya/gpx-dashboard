@@ -5,22 +5,35 @@ generated using Kedro 0.18.6
 import pandas as pd
 from geopy import Nominatim
 from geopy.extra.rate_limiter import RateLimiter
+from typing import Callable
 
-def add_geographic_attributes(df: pd.DataFrame) -> pd.DataFrame:
+
+def get_geocoder() -> RateLimiter:
     geolocator = Nominatim(user_agent="geoapiExercises")
-    geocode = RateLimiter(geolocator.reverse, min_delay_seconds=1)
+    return RateLimiter(geolocator.reverse, min_delay_seconds=1)
 
+
+def get_first_and_last_trip_points(df: pd.DataFrame) -> pd.DataFrame:
+    return pd.concat([df.groupby('trip', as_index=False).first(), df.groupby('trip', as_index=False).last()])
+
+
+def add_geographic_attributes(df: pd.DataFrame, geocoder: Callable) -> pd.DataFrame:
     df['lat_lon'] = df['latitude'].astype('string') + ", " + df['longitude'].astype('string')
+    df['location'] = df['lat_lon'].apply(geocoder)
 
-    df = df.head(40)
-    df['location'] = df['lat_lon'].apply(geocode)
-    df['neighbourhood'] =df['location'].transform(lambda location: location.raw['address']['neighbourhood'])
-    df['suburb'] =df['location'].transform(lambda location: location.raw['address']['suburb'])
-    df['city'] =df['location'].transform(lambda location: location.raw['address']['city'])
-    df['postcode'] =df['location'].transform(lambda location: location.raw['address']['postcode'])
+    df['neighbourhood'] = df['location'].transform(_get_location_datail('neighbourhood'))
+    df['suburb'] = df['location'].transform(_get_location_datail('suburb'))
+    df['city'] = df['location'].transform(_get_location_datail('city'))
+    df['postcode'] = df['location'].transform(_get_location_datail('postcode'))
+
     df.drop(['lat_lon', 'location'], axis='columns', inplace=True)
 
     return df
 
 
+def _get_location_datail(field: str) -> str:
+    return lambda location: location.raw.get('address').get(field)
 
+
+def merge_trips_with_geographic_attributes(trips_df: pd.DataFrame, geographic_data_df: pd.DataFrame) -> pd.DataFrame:
+    return trips_df.merge(geographic_data_df, on=['trip', 'step'], how='left').ffill()

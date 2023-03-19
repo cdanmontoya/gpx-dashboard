@@ -21,9 +21,10 @@ def read_gpx(file: str) -> pd.DataFrame:
         gpx = gpxpy.parse(f)
 
     for segment in gpx.tracks[0].segments:
-        for p in segment.points:
+        for i, p in enumerate(segment.points):
             points.append({
-                'file': file,
+                'trip': file,
+                'step': i,
                 'time': p.time,
                 'latitude': p.latitude,
                 'longitude': p.longitude,

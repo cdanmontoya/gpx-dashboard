@@ -7,7 +7,14 @@ merged_dataframe:
   filepath: data/02_intermediate/merged_dataframe.csv
   layer: ingestion
 
-geo_df:
+
+geocoder:
+  type: MemoryDataSet
+  copy_mode: assign
+  layer: enrichment
+
+
+enriched_df:
   type: pandas.CSVDataSet
-  filepath: data/02_intermediate/geo_df.csv
+  filepath: data/02_intermediate/enriched_df.csv
   layer: enrichment
