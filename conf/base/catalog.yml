@@ -4,8 +4,10 @@
 # Link: https://kedro.readthedocs.io/en/stable/data/data_catalog.html
 merged_dataframe:
   type: pandas.CSVDataSet
-  filepath: data/02_intermediate/merged_dataframe.feather
+  filepath: data/02_intermediate/merged_dataframe.csv
+  layer: ingestion
 
 geo_df:
   type: pandas.CSVDataSet
   filepath: data/02_intermediate/geo_df.csv
+  layer: enrichment
