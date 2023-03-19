@@ -13,6 +13,6 @@ kedro-telemetry~=0.2.0
 kedro-viz~=5.3.0
 nbstripout~=0.4
 pyarrow~=11.0.0
-pytest-cov~=3.0
+pytest-cov~=4.0
 pytest-mock>=1.7.1, <2.0
 pytest~=7.2
