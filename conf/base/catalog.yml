@@ -18,3 +18,8 @@ enriched_df:
   type: pandas.CSVDataSet
   filepath: data/02_intermediate/enriched_df.csv
   layer: enrichment
+
+feature_df:
+  type: pandas.CSVDataSet
+  filepath: data/03_primary/feature_df.csv
+  layer: feature_engineering
