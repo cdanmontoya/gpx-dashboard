@@ -20,16 +20,21 @@ exclude_lines = ["pragma: no cover", "raise NotImplementedError"]
 name = "gpx-dashboard"
 version = "0.1.0"
 description = ""
-authors = ["cdanmontoya <camontoyah@unal.edu.co>"]
+authors = ["cdanmontoya <camontoyah@unal.edu.co>", "jsanch98 <josancheza@unal.edu.co>", "Stephany <scordobay@unal.edu.co>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = ">=3.9,<3.11"
 pandas = "^1.5.3"
 gpxpy = "^1.5.0"
+kedro = "^0.18.6"
+geopy = "^2.3.0"
 
 [tool.poetry.dev-dependencies]
 mypy = "^1.1.1"
 pytest = "^7.2.2"
+kedro-viz = "^5.3.0"
+jupyterlab = "^3.6.1"
+pytest-cov = "^4.0.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
