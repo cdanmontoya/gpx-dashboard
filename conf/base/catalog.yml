@@ -22,4 +22,9 @@ enriched_df:
 feature_df:
   type: pandas.CSVDataSet
   filepath: data/03_primary/feature_df.csv
-  layer: feature_engineering
+  layer: feature engineering
+
+compact_df:
+  type: pandas.CSVDataSet
+  filepath: data/08_reporting/compact_df.csv
+  layer: visualization
