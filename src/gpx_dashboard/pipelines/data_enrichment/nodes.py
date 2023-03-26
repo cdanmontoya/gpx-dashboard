@@ -11,7 +11,7 @@ def get_geocoder() -> RateLimiter:
 
 
 def get_first_and_last_trip_points(df: pd.DataFrame) -> pd.DataFrame:
-    return pd.concat([df.groupby('trip', as_index=False).first(), df.groupby('trip', as_index=False).last()])
+    return pd.concat([df.groupby('trip', as_index=False).first(), df.groupby('trip', as_index=False).tail(1)])
 
 
 def add_geographic_attributes(df: pd.DataFrame, geocoder: Callable) -> pd.DataFrame:
