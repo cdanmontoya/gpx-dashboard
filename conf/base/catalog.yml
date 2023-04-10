@@ -3,28 +3,36 @@
 # Documentation for this file format can be found in "The Data Catalog"
 # Link: https://kedro.readthedocs.io/en/stable/data/data_catalog.html
 merged_dataframe:
-  type: pandas.CSVDataSet
-  filepath: data/02_intermediate/merged_dataframe.csv
+  type: pandas.ParquetDataSet
+  filepath: data/02_intermediate/merged_data.parquet
+  save_args:
+    compression: GZIP
   layer: ingestion
-
 
 geocoder:
   type: MemoryDataSet
   copy_mode: assign
   layer: enrichment
 
-
 enriched_df:
-  type: pandas.CSVDataSet
-  filepath: data/02_intermediate/enriched_df.csv
+  type: pandas.ParquetDataSet
+  filepath: data/03_primary/enriched_data.parquet
+  save_args:
+    compression: GZIP
   layer: enrichment
 
 feature_df:
-  type: pandas.CSVDataSet
-  filepath: data/03_primary/feature_df.csv
-  layer: feature engineering
+  type: pandas.SQLTableDataSet
+  credentials: dev_sql
+  table_name: feature_data
+  save_args:
+    if_exists: replace
+  layer: visualization
 
 compact_df:
-  type: pandas.CSVDataSet
-  filepath: data/08_reporting/compact_df.csv
+  type: pandas.SQLTableDataSet
+  credentials: dev_sql
+  table_name: compact_data
+  save_args:
+    if_exists: replace
   layer: visualization

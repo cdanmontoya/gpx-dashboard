@@ -1,10 +1,70 @@
 [[package]]
+name = "aiobotocore"
+version = "2.4.2"
+description = "Async client for aws services using botocore and aiohttp"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+aiohttp = ">=3.3.1"
+aioitertools = ">=0.5.1"
+botocore = ">=1.27.59,<1.27.60"
+wrapt = ">=1.10.10"
+
+[package.extras]
+awscli = ["awscli (>=1.25.60,<1.25.61)"]
+boto3 = ["boto3 (>=1.24.59,<1.24.60)"]
+
+[[package]]
 name = "aiofiles"
 version = "22.1.0"
 description = "File support for asyncio."
 category = "dev"
 optional = false
 python-versions = ">=3.7,<4.0"
+
+[[package]]
+name = "aiohttp"
+version = "3.8.4"
+description = "Async http client/server framework (asyncio)"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+aiosignal = ">=1.1.2"
+async-timeout = ">=4.0.0a3,<5.0"
+attrs = ">=17.3.0"
+charset-normalizer = ">=2.0,<4.0"
+frozenlist = ">=1.1.1"
+multidict = ">=4.5,<7.0"
+yarl = ">=1.0,<2.0"
+
+[package.extras]
+speedups = ["aiodns", "brotli", "cchardet"]
+
+[[package]]
+name = "aioitertools"
+version = "0.11.0"
+description = "itertools and builtins for AsyncIO and mixed iterables"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+typing_extensions = {version = ">=4.0", markers = "python_version < \"3.10\""}
+
+[[package]]
+name = "aiosignal"
+version = "1.3.1"
+description = "aiosignal: a list of registered asynchronous callbacks"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+frozenlist = ">=1.1.0"
 
 [[package]]
 name = "aiosqlite"
@@ -120,6 +180,14 @@ six = "*"
 test = ["astroid", "pytest"]
 
 [[package]]
+name = "async-timeout"
+version = "4.0.2"
+description = "Timeout context manager for asyncio programs"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
 name = "attrs"
 version = "22.2.0"
 description = "Classes Without Boilerplate"
@@ -191,6 +259,22 @@ webencodings = "*"
 
 [package.extras]
 css = ["tinycss2 (>=1.1.0,<1.2)"]
+
+[[package]]
+name = "botocore"
+version = "1.27.59"
+description = "Low-level, data-driven core of boto 3."
+category = "main"
+optional = false
+python-versions = ">= 3.7"
+
+[package.dependencies]
+jmespath = ">=0.7.1,<2.0.0"
+python-dateutil = ">=2.1,<3.0.0"
+urllib3 = ">=1.25.4,<1.27"
+
+[package.extras]
+crt = ["awscrt (==0.14.0)"]
 
 [[package]]
 name = "build"
@@ -307,7 +391,7 @@ requests = ">=2.23.0"
 
 [[package]]
 name = "coverage"
-version = "7.2.2"
+version = "7.2.3"
 description = "Code coverage measurement for Python"
 category = "dev"
 optional = false
@@ -421,12 +505,20 @@ optional = false
 python-versions = ">=2.7, !=3.0, !=3.1, !=3.2, !=3.3, !=3.4, <4"
 
 [[package]]
-name = "fsspec"
-version = "2023.1.0"
-description = "File-system specification"
+name = "frozenlist"
+version = "1.3.3"
+description = "A list-like structure which implements collections.abc.MutableSequence"
 category = "main"
 optional = false
 python-versions = ">=3.7"
+
+[[package]]
+name = "fsspec"
+version = "2023.3.0"
+description = "File-system specification"
+category = "main"
+optional = false
+python-versions = ">=3.8"
 
 [package.extras]
 abfs = ["adlfs"]
@@ -434,7 +526,6 @@ adl = ["adlfs"]
 arrow = ["pyarrow (>=1)"]
 dask = ["dask", "distributed"]
 dropbox = ["dropboxdrivefs", "requests", "dropbox"]
-entrypoints = ["importlib-metadata"]
 fuse = ["fusepy"]
 gcs = ["gcsfs"]
 git = ["pygit2"]
@@ -984,7 +1075,7 @@ test = ["codecov", "ipykernel", "jupyterlab-server", "openapi-spec-validator (>=
 
 [[package]]
 name = "kedro"
-version = "0.18.6"
+version = "0.18.7"
 description = "Kedro helps you build production-ready data and analytics pipelines"
 category = "main"
 optional = false
@@ -997,7 +1088,7 @@ cachetools = ">=5.3,<6.0"
 click = "<9.0"
 cookiecutter = ">=2.1.1,<3.0"
 dynaconf = ">=3.1.2,<4.0"
-fsspec = ">=2021.4,<2023.1.1"
+fsspec = {version = ">=2023.1,<2023.4", markers = "python_version >= \"3.8\""}
 gitpython = ">=3.0,<4.0"
 importlib-metadata = {version = ">=3.6", markers = "python_version >= \"3.8\""}
 importlib-resources = ">=1.3"
@@ -1147,6 +1238,14 @@ python-versions = "*"
 name = "more-itertools"
 version = "9.1.0"
 description = "More routines for operating on iterables, beyond itertools"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
+name = "multidict"
+version = "6.0.4"
+description = "multidict implementation"
 category = "main"
 optional = false
 python-versions = ">=3.7"
@@ -1529,6 +1628,22 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 test = ["ipaddress", "mock", "enum34", "pywin32", "wmi"]
 
 [[package]]
+name = "psycopg2"
+version = "2.9.5"
+description = "psycopg2 - Python-PostgreSQL Database Adapter"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
+name = "psycopg2-binary"
+version = "2.9.6"
+description = "psycopg2 - Python-PostgreSQL Database Adapter"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
 name = "ptyprocess"
 version = "0.7.0"
 description = "Run a subprocess in a pseudo terminal"
@@ -1809,6 +1924,23 @@ dev = ["pytest (>=7.0.1)", "pytest-timeout (>=2.1.0)", "build (>=0.7.0)", "pre-c
 doc = ["pytoolconfig", "sphinx (>=4.5.0)", "sphinx-autodoc-typehints (>=1.18.1)", "sphinx-rtd-theme (>=1.0.0)"]
 
 [[package]]
+name = "s3fs"
+version = "2023.3.0"
+description = "Convenient Filesystem interface over S3"
+category = "main"
+optional = false
+python-versions = ">= 3.8"
+
+[package.dependencies]
+aiobotocore = ">=2.4.2,<2.5.0"
+aiohttp = "<4.0.0a0 || >4.0.0a0,<4.0.0a1 || >4.0.0a1"
+fsspec = "2023.3.0"
+
+[package.extras]
+awscli = ["aiobotocore[awscli] (>=2.4.2,<2.5.0)"]
+boto3 = ["aiobotocore[boto3] (>=2.4.2,<2.5.0)"]
+
+[[package]]
 name = "semver"
 version = "2.13.0"
 description = "Python helper for Semantic Versioning (http://semver.org/)"
@@ -2051,7 +2183,7 @@ test = ["argcomplete (>=2.0)", "pre-commit", "pytest", "pytest-mock"]
 name = "typing-extensions"
 version = "4.5.0"
 description = "Backported and Experimental Type Hints for Python 3.7+"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7"
 
@@ -2182,12 +2314,32 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "wrapt"
+version = "1.15.0"
+description = "Module for decorators, wrappers and monkey patching."
+category = "main"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
+
+[[package]]
 name = "y-py"
 version = "0.5.9"
 description = "Python bindings for the Y-CRDT built from yrs (Rust)"
 category = "dev"
 optional = false
 python-versions = "*"
+
+[[package]]
+name = "yarl"
+version = "1.8.2"
+description = "Yet another URL library"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+idna = ">=2.0"
+multidict = ">=4.0"
 
 [[package]]
 name = "ypy-websocket"
@@ -2220,10 +2372,14 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "flake8 (<5)", "pytest-co
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.9,<3.11"
-content-hash = "30769496d364fb0cd1d5118c979f0110cc8f889e02ad0b8bc36758f384b367e6"
+content-hash = "59fef4003006a5f7f4e9ca3058d4a5f12c76610b44ddee858c0ec640d47730d8"
 
 [metadata.files]
+aiobotocore = []
 aiofiles = []
+aiohttp = []
+aioitertools = []
+aiosignal = []
 aiosqlite = []
 antlr4-python3-runtime = []
 anyconfig = []
@@ -2233,12 +2389,17 @@ argon2-cffi = []
 argon2-cffi-bindings = []
 arrow = []
 asttokens = []
+async-timeout = [
+    {file = "async-timeout-4.0.2.tar.gz", hash = "sha256:2163e1640ddb52b7a8c80d0a67a08587e5d245cc9c553a74a847056bc2976b15"},
+    {file = "async_timeout-4.0.2-py3-none-any.whl", hash = "sha256:8ca1e4fcf50d07413d66d1a5e416e42cfdf5851c981d679a09851a6853383b3c"},
+]
 attrs = []
 babel = []
 backcall = []
 beautifulsoup4 = []
 binaryornot = []
 bleach = []
+botocore = []
 build = []
 cachetools = []
 certifi = []
@@ -2262,6 +2423,7 @@ executing = []
 fastapi = []
 fastjsonschema = []
 fqdn = []
+frozenlist = []
 fsspec = []
 geographiclib = []
 geopy = []
@@ -2309,6 +2471,7 @@ matplotlib-inline = []
 mdurl = []
 mistune = []
 more-itertools = []
+multidict = []
 mypy = []
 mypy-extensions = []
 nbclassic = []
@@ -2338,6 +2501,8 @@ pluggy = [
 prometheus-client = []
 prompt-toolkit = []
 psutil = []
+psycopg2 = []
+psycopg2-binary = []
 ptyprocess = []
 pure-eval = []
 pycparser = []
@@ -2399,6 +2564,7 @@ rfc3339-validator = []
 rfc3986-validator = []
 rich = []
 rope = []
+s3fs = []
 semver = []
 send2trash = []
 six = [
@@ -2442,6 +2608,8 @@ webcolors = []
 webencodings = []
 websocket-client = []
 websockets = []
+wrapt = []
 y-py = []
+yarl = []
 ypy-websocket = []
 zipp = []
