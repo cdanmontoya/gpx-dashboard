@@ -3,6 +3,9 @@ from typing import List
 
 import gpxpy
 import pandas as pd
+import logging
+
+log = logging.getLogger(__name__)
 
 
 def get_files_path(prefix='data/01_raw/', extension='gpx') -> List[str]:
@@ -16,6 +19,7 @@ def read_files(files_path: List[str]) -> pd.DataFrame:
 
 
 def read_gpx(file: str) -> pd.DataFrame:
+    log.info(f'Opening file {file}')
     points = []
 
     with open(file) as f:
