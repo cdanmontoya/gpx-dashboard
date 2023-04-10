@@ -4,8 +4,7 @@
 # Link: https://kedro.readthedocs.io/en/stable/data/data_catalog.html
 merged_dataframe:
   type: pandas.ParquetDataSet
-  filepath: s3://gpx-data-raw/stage-data/intermediate/merged_data.parquet
-  credentials: dev_s3
+  filepath: data/02_intermediate/merged_data.parquet
   save_args:
     compression: GZIP
   layer: ingestion
@@ -17,8 +16,7 @@ geocoder:
 
 enriched_df:
   type: pandas.ParquetDataSet
-  filepath: s3://gpx-data-enrichment/enriched-data/enrichment/enriched_data.parquet
-  credentials: dev_s3
+  filepath: data/03_primary/enriched_data.parquet
   save_args:
     compression: GZIP
   layer: enrichment

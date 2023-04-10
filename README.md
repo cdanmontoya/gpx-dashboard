@@ -2,6 +2,16 @@
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white) ![Power Bi](https://img.shields.io/badge/power_bi-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
 
+By [@stcordobay](https://github.com/stcordobay), [@jsanch98](https://github.com/jsanch98) and [@cdanmontoya](https://github.com/cdanmontoya) as an assignment for [Applied Data Science](https://jdvelasq.github.io/courses/asignaturas/ciencia-de-los-datos.html) course at [Universidad Nacional de Colombia](https://minas.medellin.unal.edu.co/)  
+
+We implemented a data pipeline to create a control dashboard that led to some insights from raw GPX files.
+We gathered trip data using a tracking app, enriched data using [GeoPy](https://geopy.readthedocs.io/en/stable/),
+processed data using [pandas](https://geopy.readthedocs.io/en/stable/), and structured the project using [Kedro](https://kedro.org/). 
+
+The resulting dashboard allows us to see where and when is a higher demand for trips, and some summary stats of
+the trips, for example, the average trip speed, which is lower at peak hours.
+
+![](docs/img/dashboard.png)
 
 
 ## Overview

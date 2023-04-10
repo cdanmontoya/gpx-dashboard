@@ -17,4 +17,5 @@ pytest-cov~=4.0
 pytest-mock>=1.7.1, <2.0
 pytest~=7.2
 psycopg2
+kedro-datasets[parquet]
 s3fs
