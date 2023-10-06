@@ -8,8 +8,10 @@ import pandas as pd
 from airflow.decorators import dag, task
 from airflow.providers.amazon.aws.hooks.s3 import S3Hook
 from geopy import distance
+from sqlalchemy import create_engine
 
 s3_hook = S3Hook(aws_conn_id="minio_s3_connection")
+engine = create_engine('postgresql://postgres:mysecretpassword@db:5432/gpx-db')
 
 
 @task()
@@ -108,6 +110,11 @@ def store_to_stage(df: pd.DataFrame):
     )
 
 
+@task()
+def store_to_db(df: pd.DataFrame):
+    df.to_sql('feature_data', engine)
+
+
 @dag(
     dag_id="feature_engineering",
     start_date=datetime.now(),
@@ -120,6 +127,7 @@ def feature_engineering():
     weekday_df = get_weekday_and_hour(data)
     feature_df = merge_features(data, elapsed_time_df, distance_df, weekday_df)
     store_to_stage(feature_df)
+    store_to_db(feature_df)
 
 
 feature_engineering()
